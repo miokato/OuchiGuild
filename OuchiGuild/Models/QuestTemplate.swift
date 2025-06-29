@@ -1,5 +1,5 @@
 //
-//  Quest.swift
+//  QuestTemplate.swift
 //  OuchiGuild
 //
 //  Created by mio kato on 2025/06/29.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class Quest: Identifiable {
+final class QuestTemplate: Identifiable {
     var id: UUID
     var title: String
     var note: String
