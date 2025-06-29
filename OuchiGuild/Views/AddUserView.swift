@@ -35,6 +35,8 @@ struct AddUserView: View {
             Button(action: addUser) {
                 Text("追加")
             }
+            .buttonStyle(.borderedProminent)
+            .padding()
             .disabled(!isValid)
         }
     }

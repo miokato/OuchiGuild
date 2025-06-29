@@ -53,6 +53,8 @@ struct QuestDetailView: View {
                 }
             }
             Button("このクエストを始める", action: handleButtonTapped)
+                .buttonStyle(.borderedProminent)
+                .padding()
                 .disabled(!isValid)
         }
     }

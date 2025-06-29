@@ -40,6 +40,8 @@ struct AddQuestTemplateView: View {
             Button(action: handleButtonTapped) {
                 Text("作成")
             }
+            .buttonStyle(.borderedProminent)
+            .padding()
             .disabled(!isValid)
         }
     }

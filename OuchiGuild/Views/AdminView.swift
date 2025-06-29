@@ -26,6 +26,8 @@ struct AdminView: View {
                 Button(action: handleButtonTapped) {
                     Text("完了")
                 }
+                .buttonStyle(.borderedProminent)
+                .padding()
             }
             .sheet(isPresented: $isShowAddUserView, content: {
                 AddUserView()
