@@ -1,5 +1,5 @@
 //
-//  QuestDetailView.swift
+//  QuestTemplateDetailView.swift
 //  OuchiGuild
 //
 //  Created by mio-kato on 2025/06/29.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct QuestDetailView: View {
+struct QuestTemplateDetailView: View {
     var questTemplate:  QuestTemplate
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
@@ -61,6 +61,6 @@ struct QuestDetailView: View {
 }
 
 #Preview {
-    QuestDetailView(questTemplate: .init(title: "お庭掃除", note: "お庭掃除します", reward: 100))
+    QuestTemplateDetailView(questTemplate: .init(title: "お庭掃除", note: "お庭掃除します", reward: 100))
         .modelContainer(previewContainer)
 }

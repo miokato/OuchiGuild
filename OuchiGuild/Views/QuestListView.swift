@@ -16,7 +16,7 @@ struct QuestListView: View {
         NavigationStack {
             List(questTemplates, id: \.id) { template in
                 NavigationLink(template.cellDisplayText) {
-                    QuestDetailView(questTemplate: template)
+                    QuestTemplateDetailView(questTemplate: template)
                 }
             }
             .sheet(isPresented: $isShowAddQuestTemplateView, content: {
