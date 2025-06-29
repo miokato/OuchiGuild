@@ -6,13 +6,36 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct QuestListView: View {
+    @Query(sort: \QuestTemplate.createdAt, order: .reverse) var questTemplates: [QuestTemplate]
+    @State private var isShowAddQuestTemplateView = false
+    
     var body: some View {
-        Text("Hello, World!")
+        NavigationStack {
+            List(questTemplates, id: \.id) { template in
+                NavigationLink(template.cellDisplayText) {
+                    QuestDetailView()
+                }
+            }
+            .sheet(isPresented: $isShowAddQuestTemplateView, content: {
+                AddQuestTemplateView()
+            })
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        isShowAddQuestTemplateView = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
+        }
     }
 }
 
 #Preview {
     QuestListView()
+        .modelContainer(previewContainer)
 }
