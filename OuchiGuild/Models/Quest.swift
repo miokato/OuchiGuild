@@ -17,6 +17,7 @@ final class Quest: Identifiable {
     var reward: Int
     var createdAt: Date
     var user: User?
+    var progress: QuestProgress
     
     init(title: String, note: String, reward: Int, template: QuestTemplate?, user: User?) {
         self.id = UUID()
@@ -26,6 +27,7 @@ final class Quest: Identifiable {
         self.reward = reward
         self.template = template
         self.user = user
+        self.progress = .notStarted
     }
 }
 
