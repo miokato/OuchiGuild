@@ -6,24 +6,49 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct UserView: View {
-    @State private var isShowGuildView = false
+    @State private var isShowAdminView = false
+    @Query private var quests: [Quest]
+    @Query private var users: [User]
+    @State private var selectedUser: User?
+    
+    private var filteredQuests: [Quest] {
+        guard let user = selectedUser else { return quests }
+        return quests.filter { $0.userId == user.id }
+    }
     
     var body: some View {
         NavigationStack {
             ZStack {
-                Text("UserView")
+                Form {
+                    Section {
+                        Picker("ユーザーを選択", selection: $selectedUser) {
+                            ForEach(users) { user in
+                                Text(user.name)
+                                    .tag(user)
+                            }
+                        }
+                    } header: {
+                        Text("ユーザー")
+                    }
+                    Section {
+                        List(filteredQuests) { quest in
+                            Text(quest.cellDisplayText)
+                        }
+                    }
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Admin") {
-                        isShowGuildView = true
+                        isShowAdminView = true
                     }
                 }
             }
-            .fullScreenCover(isPresented: $isShowGuildView) {
-                GuildView()
+            .fullScreenCover(isPresented: $isShowAdminView) {
+                AdminView()
             }
         }
     }
@@ -31,4 +56,5 @@ struct UserView: View {
 
 #Preview {
     UserView()
+        .modelContainer(previewContainer)
 }

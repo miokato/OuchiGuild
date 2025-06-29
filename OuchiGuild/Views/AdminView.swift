@@ -1,5 +1,5 @@
 //
-//  GuildView.swift
+//  AdminView.swift
 //  OuchiGuild
 //
 //  Created by mio-kato on 2025/06/29.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct GuildView: View {
+struct AdminView: View {
     var body: some View {
         Text("Guild")
     }
 }
 
 #Preview {
-    GuildView()
+    AdminView()
 }

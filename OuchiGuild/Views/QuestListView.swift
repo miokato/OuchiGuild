@@ -9,14 +9,14 @@ import SwiftUI
 import SwiftData
 
 struct QuestListView: View {
-    @Query(sort: \QuestTemplate.createdAt, order: .reverse) var questTemplates: [QuestTemplate]
+    @Query(sort: \QuestTemplate.createdAt, order: .reverse) private var questTemplates: [QuestTemplate]
     @State private var isShowAddQuestTemplateView = false
     
     var body: some View {
         NavigationStack {
             List(questTemplates, id: \.id) { template in
                 NavigationLink(template.cellDisplayText) {
-                    QuestDetailView()
+                    QuestDetailView(questTemplate: template)
                 }
             }
             .sheet(isPresented: $isShowAddQuestTemplateView, content: {
