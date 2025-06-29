@@ -34,9 +34,7 @@ struct UserView: View {
                         Text("ユーザー")
                     }
                     Section {
-                        List(filteredQuests) { quest in
-                            Text(quest.cellDisplayText)
-                        }
+                        QuestHistoryView(quests: filteredQuests)
                     }
                 }
             }
