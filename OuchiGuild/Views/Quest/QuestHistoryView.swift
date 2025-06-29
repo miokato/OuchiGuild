@@ -12,8 +12,14 @@ struct QuestHistoryView: View {
     
     var body: some View {
         List(quests) { quest in
-            NavigationLink(quest.cellDisplayText) {
+            NavigationLink {
                 QuestDetailView(quest: quest)
+            } label: {
+                if quest.progress == .completed {
+                    Label(quest.cellDisplayText, systemImage: "checkmark.circle")
+                } else {
+                    Text(quest.cellDisplayText)
+                }
             }
         }
     }

@@ -14,7 +14,7 @@ struct MainView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-            UserView()
+            UserListView()
                 .tabItem {
                     Label("User", systemImage: "person.crop.circle")
                 }

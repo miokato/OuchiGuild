@@ -1,5 +1,5 @@
 //
-//  UserView.swift
+//  UserListView.swift
 //  OuchiGuild
 //
 //  Created by mio-kato on 2025/06/29.
@@ -8,34 +8,19 @@
 import SwiftUI
 import SwiftData
 
-struct UserView: View {
+struct UserListView: View {
     @State private var isShowAdminView = false
     @Query(sort: \Quest.createdAt, order: .forward) private var quests: [Quest]
     @Query(sort: \User.createdAt, order: .reverse) private var users: [User]
     @State private var selectedUser: User?
     
-    private var filteredQuests: [Quest] {
-        guard let selectedUser = selectedUser else { return quests }
-        return quests.filter { $0.user?.id == selectedUser.id }
-    }
-    
     var body: some View {
         NavigationStack {
-            ZStack {
-                Form {
-                    Section {
-                        Picker("ユーザーを選択", selection: $selectedUser) {
-                            ForEach(users) { user in
-                                Text(user.name)
-                                    .tag(user)
-                            }
-                        }
-                    } header: {
-                        Text("ユーザー")
-                    }
-                    Section {
-                        QuestHistoryView(quests: filteredQuests)
-                    }
+            List(users) { user in
+                NavigationLink {
+                    UserDetailView(user: user)
+                } label: {
+                    Text(user.name)
                 }
             }
             .toolbar {
@@ -53,6 +38,6 @@ struct UserView: View {
 }
 
 #Preview {
-    UserView()
+    UserListView()
         .modelContainer(previewContainer)
 }

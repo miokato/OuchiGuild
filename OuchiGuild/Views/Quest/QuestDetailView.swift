@@ -11,7 +11,9 @@ struct QuestDetailView: View {
     var quest: Quest
     
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
     @State private var questProgress: QuestProgress = .notStarted
+    @State private var isShowDeleteAlert = false
     
     private func handleAppear() {
         questProgress = quest.progress
@@ -20,6 +22,16 @@ struct QuestDetailView: View {
     private func handleQuestProgressChanged() {
         quest.progress = questProgress
         try? modelContext.save()
+    }
+    
+    private func deleteQuest() {
+        modelContext.delete(quest)
+        try? modelContext.save()
+        dismiss()
+    }
+    
+    private func showDeleteAlert() {
+        isShowDeleteAlert = true
     }
     
     var body: some View {
@@ -32,11 +44,30 @@ struct QuestDetailView: View {
                 }
             }
         }
+        .alert("削除しますか？", isPresented: $isShowDeleteAlert, actions: {
+            VStack {
+                Button("キャンセル", role: .cancel) {
+                }
+                Button(role: .destructive, action: deleteQuest) {
+                    Text("削除")
+                }
+            }
+        })
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: showDeleteAlert) {
+                    Image(systemName: "trash.slash.circle.fill")
+                        .tint(Color.red)
+                }
+            }
+        }
         .onAppear(perform: handleAppear)
         .onChange(of: questProgress, handleQuestProgressChanged)
     }
 }
 
 #Preview {
-    QuestDetailView(quest: Quest(title: "sample", note: "", reward: 100, template: nil, user: nil))
+    NavigationStack {
+        QuestDetailView(quest: Quest(title: "sample", note: "", reward: 100, template: nil, user: nil))
+    }
 }
