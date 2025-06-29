@@ -18,6 +18,10 @@ struct MainView: View {
                 .tabItem {
                     Label("User", systemImage: "person.crop.circle")
                 }
+            TransactionListView()
+                .tabItem {
+                    Label("User", systemImage: "australsign.bank.building")
+                }
         }
     }
 }

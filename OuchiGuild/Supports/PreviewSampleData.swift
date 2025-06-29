@@ -25,10 +25,14 @@ let previewContainer: ModelContainer = {
         container.mainContext.insert(qt1)
         container.mainContext.insert(qt2)
         
+        let u0 = User(name: "銀行")
+        let u00 = User(name: "ギルド")
         let u1 = User(name: "はじめ")
         let u2 = User(name: "あっとー")
         let u3 = User(name: "おかC")
         let u4 = User(name: "ちゃちゃ")
+        container.mainContext.insert(u0)
+        container.mainContext.insert(u00)
         container.mainContext.insert(u1)
         container.mainContext.insert(u2)
         container.mainContext.insert(u3)
@@ -41,6 +45,9 @@ let previewContainer: ModelContainer = {
         container.mainContext.insert(q2)
         container.mainContext.insert(q3)
         
+        let tx1 = TransferRecord(amount: 10000, type: .issue, from: nil, to: u0, memo: "紙幣発行")
+        container.mainContext.insert(tx1)
+
         return container
     } catch {
         fatalError("Failed to create container")

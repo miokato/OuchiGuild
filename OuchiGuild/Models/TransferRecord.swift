@@ -25,5 +25,10 @@ final class TransferRecord: Identifiable {
         self.to = to
         self.memo = memo
     }
-    
+}
+
+extension TransferRecord {
+    var preview: String {
+        "TYPE:\(type), 金額:\(amount), from:\(from?.name ?? "-"), to:\(to?.name ?? "-")"
+    }
 }
