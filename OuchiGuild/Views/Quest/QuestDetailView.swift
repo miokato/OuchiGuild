@@ -34,6 +34,16 @@ struct QuestDetailView: View {
         isShowDeleteAlert = true
     }
     
+    private func handleProgressChanged() {
+        guard let user = quest.user else { return }
+        if quest.progress == .completed {
+            TransactionService.shared.payQuestReward(to: user,
+                                                     amount: quest.reward,
+                                                     questID: quest.id,
+                                                     in: modelContext)
+        }
+    }
+    
     var body: some View {
         Form {
             Text(quest.title)
@@ -44,6 +54,7 @@ struct QuestDetailView: View {
                 }
             }
         }
+        .onChange(of: quest.progress, handleProgressChanged)
         .alert("削除しますか？", isPresented: $isShowDeleteAlert, actions: {
             VStack {
                 Button("キャンセル", role: .cancel) {
