@@ -16,7 +16,7 @@ struct UserView: View {
     
     private var filteredQuests: [Quest] {
         guard let user = selectedUser else { return quests }
-        return quests.filter { $0.userId == user.id }
+        return quests.filter { $0.user?.id == user.id }
     }
     
     var body: some View {

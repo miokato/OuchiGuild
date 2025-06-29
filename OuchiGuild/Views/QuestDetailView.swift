@@ -24,8 +24,7 @@ struct QuestDetailView: View {
         let quest = Quest(title: questTemplate.title,
                           note: questTemplate.note,
                           reward: questTemplate.reward,
-                          templateId: questTemplate.id,
-                          userId: selectedUser.id,
+                          template: questTemplate,
                           user: selectedUser)
         modelContext.insert(quest)
         try? modelContext.save()

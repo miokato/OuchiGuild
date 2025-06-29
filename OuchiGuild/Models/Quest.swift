@@ -11,22 +11,20 @@ import SwiftData
 @Model
 final class Quest: Identifiable {
     @Attribute(.unique) var id: UUID
-    var templateId: UUID
-    var userId: UUID
+    var template: QuestTemplate?
     var title: String
     var note: String
     var reward: Int
     var createdAt: Date
     var user: User?
     
-    init(title: String, note: String, reward: Int, templateId: UUID, userId: UUID, user: User) {
+    init(title: String, note: String, reward: Int, template: QuestTemplate?, user: User?) {
         self.id = UUID()
         self.createdAt = Date()
         self.title = title
         self.note = note
         self.reward = reward
-        self.templateId = templateId
-        self.userId = userId
+        self.template = template
         self.user = user
     }
 }

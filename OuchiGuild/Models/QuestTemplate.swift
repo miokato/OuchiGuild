@@ -15,6 +15,7 @@ final class QuestTemplate: Identifiable {
     var note: String
     var reward: Int
     var createdAt: Date
+    @Relationship(deleteRule: .nullify, inverse: \Quest.template) var quests: [Quest]
     
     init(title: String, note: String, reward: Int) {
         self.id = UUID()
@@ -22,6 +23,7 @@ final class QuestTemplate: Identifiable {
         self.note = note
         self.reward = reward
         self.createdAt = Date()
+        self.quests = []
     }
 }
 
