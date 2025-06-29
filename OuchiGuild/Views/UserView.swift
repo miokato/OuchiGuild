@@ -11,7 +11,7 @@ import SwiftData
 struct UserView: View {
     @State private var isShowAdminView = false
     @Query private var quests: [Quest]
-    @Query private var users: [User]
+    @Query(sort: \User.createdAt, order: .reverse) private var users: [User]
     @State private var selectedUser: User?
     
     private var filteredQuests: [Quest] {

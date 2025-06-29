@@ -27,6 +27,7 @@ struct QuestDetailView: View {
                           templateId: questTemplate.id,
                           userId: selectedUser.id)
         modelContext.insert(quest)
+        try? modelContext.save()
         dismiss()
     }
     

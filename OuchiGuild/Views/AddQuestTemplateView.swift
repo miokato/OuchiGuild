@@ -26,6 +26,7 @@ struct AddQuestTemplateView: View {
             reward: rewared
         )
         modelContext.insert(questTemplate)
+        try? modelContext.save()
         dismiss()
     }
     
