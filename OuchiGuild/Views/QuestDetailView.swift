@@ -25,7 +25,8 @@ struct QuestDetailView: View {
                           note: questTemplate.note,
                           reward: questTemplate.reward,
                           templateId: questTemplate.id,
-                          userId: selectedUser.id)
+                          userId: selectedUser.id,
+                          user: selectedUser)
         modelContext.insert(quest)
         try? modelContext.save()
         dismiss()

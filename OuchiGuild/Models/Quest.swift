@@ -10,15 +10,16 @@ import SwiftData
 
 @Model
 final class Quest: Identifiable {
-    var id: UUID
+    @Attribute(.unique) var id: UUID
     var templateId: UUID
     var userId: UUID
     var title: String
     var note: String
     var reward: Int
     var createdAt: Date
+    var user: User?
     
-    init(title: String, note: String, reward: Int, templateId: UUID, userId: UUID) {
+    init(title: String, note: String, reward: Int, templateId: UUID, userId: UUID, user: User) {
         self.id = UUID()
         self.createdAt = Date()
         self.title = title
@@ -26,11 +27,12 @@ final class Quest: Identifiable {
         self.reward = reward
         self.templateId = templateId
         self.userId = userId
+        self.user = user
     }
 }
 
 extension Quest {
     var cellDisplayText: String {
-        "\(title) 報酬 : \(reward) アジー"
+        "\(title), ユーザー : \(user?.name ?? "不明")"
     }
 }

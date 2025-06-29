@@ -27,7 +27,7 @@ struct UserView: View {
                         Picker("ユーザーを選択", selection: $selectedUser) {
                             ForEach(users) { user in
                                 Text(user.name)
-                                    .tag(user)
+                                    .tag(user.id)
                             }
                         }
                     } header: {

@@ -33,9 +33,9 @@ let previewContainer: ModelContainer = {
         container.mainContext.insert(u3)
         container.mainContext.insert(u4)
         
-        let q1 = Quest(title: qt1.title, note: qt1.note, reward: qt1.reward, templateId: qt1.id, userId: u1.id)
-        let q2 = Quest(title: qt2.title, note: qt2.note, reward: qt2.reward, templateId: qt2.id, userId: u1.id)
-        let q3 = Quest(title: qt1.title, note: qt1.note, reward: qt1.reward, templateId: qt1.id, userId: u4.id)
+        let q1 = Quest(title: qt1.title, note: qt1.note, reward: qt1.reward, templateId: qt1.id, userId: u1.id, user: u1)
+        let q2 = Quest(title: qt2.title, note: qt2.note, reward: qt2.reward, templateId: qt2.id, userId: u1.id, user: u1)
+        let q3 = Quest(title: qt1.title, note: qt1.note, reward: qt1.reward, templateId: qt1.id, userId: u4.id, user: u4)
         container.mainContext.insert(q1)
         container.mainContext.insert(q2)
         container.mainContext.insert(q3)

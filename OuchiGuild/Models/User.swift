@@ -10,13 +10,16 @@ import SwiftData
 
 @Model
 final class User: Identifiable {
-    var id: UUID
+    @Attribute(.unique) var id: UUID
     var createdAt: Date
     var name: String
+    @Relationship(deleteRule: .cascade, inverse: \Quest.user)
+    var quests: [Quest]
     
     init(name: String) {
         self.id = UUID()
         self.createdAt = Date()
         self.name = name
+        self.quests = []
     }
 }

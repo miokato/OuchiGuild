@@ -10,7 +10,7 @@ import SwiftData
 
 @Model
 final class QuestTemplate: Identifiable {
-    var id: UUID
+    @Attribute(.unique) var id: UUID
     var title: String
     var note: String
     var reward: Int
