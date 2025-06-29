@@ -10,17 +10,17 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-            HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }
             UserListView()
                 .tabItem {
-                    Label("User", systemImage: "person.crop.circle")
+                    Label("ユーザー", systemImage: "person.crop.circle")
+                }
+            HomeView()
+                .tabItem {
+                    Label("お仕事", systemImage: "house")
                 }
             TransactionListView()
                 .tabItem {
-                    Label("User", systemImage: "australsign.bank.building")
+                    Label("取引", systemImage: "australsign.bank.building")
                 }
         }
     }
