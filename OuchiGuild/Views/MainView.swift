@@ -15,7 +15,7 @@ struct MainView: View {
                 HomeView()
             }
             Tab("User", systemImage: "person.crop.circle") {
-                HomeView()
+                UserView()
             }
         }
     }

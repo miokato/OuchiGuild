@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  GuildView.swift
 //  OuchiGuild
 //
 //  Created by mio-kato on 2025/06/29.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct GuildView: View {
     var body: some View {
-        QuestListView()
+        Text("Guild")
     }
 }
 
 #Preview {
-    HomeView()
+    GuildView()
 }

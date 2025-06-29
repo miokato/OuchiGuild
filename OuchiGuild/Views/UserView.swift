@@ -8,8 +8,24 @@
 import SwiftUI
 
 struct UserView: View {
+    @State private var isShowGuildView = false
+    
     var body: some View {
-        Text("Hello, World!")
+        NavigationStack {
+            ZStack {
+                Text("UserView")
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Admin") {
+                        isShowGuildView = true
+                    }
+                }
+            }
+            .fullScreenCover(isPresented: $isShowGuildView) {
+                GuildView()
+            }
+        }
     }
 }
 
