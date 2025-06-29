@@ -15,6 +15,7 @@ let previewContainer: ModelContainer = {
             QuestTemplate.self,
             Quest.self,
             User.self,
+            TransferRecord.self,
         ])
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         var container = try ModelContainer(for: schema, configurations: config)

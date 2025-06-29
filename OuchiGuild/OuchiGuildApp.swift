@@ -14,7 +14,8 @@ struct OuchiGuildApp: App {
         let schema = Schema([
             Quest.self,
             QuestTemplate.self,
-            User.self
+            User.self,
+            TransferRecord.self,
         ])
         let config = ModelConfiguration(cloudKitDatabase: .automatic)
         
