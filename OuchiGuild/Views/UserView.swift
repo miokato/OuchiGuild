@@ -10,13 +10,13 @@ import SwiftData
 
 struct UserView: View {
     @State private var isShowAdminView = false
-    @Query private var quests: [Quest]
+    @Query(sort: \Quest.createdAt, order: .forward) private var quests: [Quest]
     @Query(sort: \User.createdAt, order: .reverse) private var users: [User]
     @State private var selectedUser: User?
     
     private var filteredQuests: [Quest] {
-        guard let user = selectedUser else { return quests }
-        return quests.filter { $0.user?.id == user.id }
+        guard let selectedUser = selectedUser else { return quests }
+        return quests.filter { $0.user?.id == selectedUser.id }
     }
     
     var body: some View {
@@ -27,7 +27,7 @@ struct UserView: View {
                         Picker("ユーザーを選択", selection: $selectedUser) {
                             ForEach(users) { user in
                                 Text(user.name)
-                                    .tag(user.id)
+                                    .tag(user)
                             }
                         }
                     } header: {
